@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Row from './Row'
 class IvCheck extends Component {
-    constructor(props){
+    constructor(props) {
         console.log('cons');
         super(props);
         this.nextId = 1;
         this.state = {
-            rowList : [0]
+            rowList: [0]
         }
 
         this.addRow = this.addRow.bind(this);
@@ -15,20 +15,41 @@ class IvCheck extends Component {
         console.log('add');
         const newRowList = this.state.rowList.concat([this.nextId++])
         this.setState({
-            rowList : newRowList
+            rowList: newRowList
         });
+    }
+
+    delRow() {
+
     }
 
     render() {
         console.log('rend IvCheck');
-        return(
+        return (
             <div>
-            {this.state.rowList.map((i)=>{
-                return(<Row id={i} />);
-            })}
-            <button onClick = {this.addRow}> add </button>
-            </div>
+                {this.state.rowList.map((i) => {
+                    return (<Row
+                        id={i}
+                        onDelete={
+                            function (_delId) {
+                                console.log('del' + _delId);
+                                var _newRowList = Array.from(this.state.rowList);
+                                for (let i = 0; i < _newRowList.length; i++) {
+                                    if (_newRowList[i] == _delId) {
+                                        _newRowList.splice(i, 1);
+                                        break;
+                                    }
+                                }
+                                this.setState({
+                                    rowList: _newRowList
+                                });
+                            }.bind(this)
+                        }
 
+                    />);
+                })}
+                <button onClick={this.addRow}> add </button>
+            </div>
         );
     }
 }
