@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Row from './Row'
+import Axios from 'axios';
 class IvCheck extends Component {
     constructor(props) {
         console.log('cons');
@@ -17,6 +18,12 @@ class IvCheck extends Component {
         this.setState({
             rowList: newRowList
         });
+    }
+
+    reqIVs() {
+        console.log('req');
+
+        //Axios.get()
     }
 
     delRow() {
@@ -49,6 +56,7 @@ class IvCheck extends Component {
                     />);
                 })}
                 <button onClick={this.addRow}> add </button>
+                <button onClick={this.reqIVs}> send </button>
             </div>
         );
     }
