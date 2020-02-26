@@ -23,11 +23,11 @@ class Checker {
         let nextId = this._nextId++;
         let eRow = document.createElement('div');
         eRow.innerHTML = `
-                <input type="hidden" value="${nextId}" >
-                <label><input type="text" value="${nextId}" /></label>
-                <label><input type="number" min="0" max="15" value="0"></label>
-                <label><input type="number" min="0" max="15" value="0"></label>
-                <label><input type="number" min="0" max="15" value="0"></label>
+                <input type="hidden" name="idx" value="${nextId}" >
+                <label><input type="text" name="name" value="${nextId}" /></label>
+                <label><input type="number" name="statA" min="0" max="15" value="0"></label>
+                <label><input type="number" name="statB" min="0" max="15" value="0"></label>
+                <label><input type="number"name="statC"  min="0" max="15" value="0"></label>
                 <input type="button" value="del">
         `;
         this._eRootForm.appendChild(eRow);
